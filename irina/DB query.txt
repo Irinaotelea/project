@@ -1,0 +1,99 @@
+Structura Codului
+Definiția Clasei și Listelor
+
+List<User> users: Lista utilizatorilor care conține obiecte de tip User.
+int nextId: Folosit pentru a genera ID-uri unice pentru utilizatori.
+csharp
+Copy
+Edit
+static List<User> users = new List<User>();
+static int nextId = 1;
+Metoda Main
+
+Prezintă un meniu principal care permite utilizatorului să selecteze o opțiune.
+Folosește un while (true) pentru a rula aplicația până la selectarea opțiunii de ieșire.
+Opțiunile disponibile sunt:
+Adăugarea unui utilizator.
+Vizualizarea utilizatorilor existenți.
+Editarea unui utilizator.
+Ștergerea unui utilizator.
+Ieșirea din aplicație.
+Metoda AddUser
+
+Permite adăugarea unui nou utilizator în listă.
+Solicită introducerea numelui și a emailului.
+Creează un nou obiect User și îl adaugă în listă.
+csharp
+Copy
+Edit
+static void AddUser()
+{
+    Console.Write("Nume: ");
+    string name = Console.ReadLine();
+
+    Console.Write("Email: ");
+    string email = Console.ReadLine();
+
+    users.Add(new User { Id = nextId++, Name = name, Email = email });
+}
+Metoda ViewUsers
+
+Afișează lista tuturor utilizatorilor înregistrați.
+Verifică dacă lista este goală înainte de afișare.
+csharp
+Copy
+Edit
+static void ViewUsers()
+{
+    if (users.Count == 0)
+        Console.WriteLine("Nu există utilizatori înregistrați.");
+    else
+        foreach (var user in users)
+            Console.WriteLine(user);
+}
+Metoda EditUser
+
+Permite editarea unui utilizator existent.
+Solicită ID-ul utilizatorului de modificat.
+Permite actualizarea numelui și/sau emailului, păstrând valorile originale dacă utilizatorul nu introduce date noi.
+Metoda DeleteUser
+
+Permite ștergerea unui utilizator existent.
+Solicită ID-ul utilizatorului și îl elimină din listă dacă există.
+Clase Adiționale
+
+Clasa User:
+
+Conține proprietăți precum Id, Name și Email.
+Suprascrie metoda ToString pentru a afișa informațiile despre utilizator într-un format lizibil.
+csharp
+Copy
+Edit
+class User
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+
+    public override string ToString()
+    {
+        return $"ID: {Id}, Nume: {Name}, Email: {Email}";
+    }
+}
+Funcționalitate
+Adaugă Utilizator
+
+Completează informațiile despre utilizator.
+Fiecare utilizator primește un ID unic.
+Vizualizează Utilizatori
+
+Afișează lista completă a utilizatorilor sau un mesaj dacă lista este goală.
+Editează Utilizator
+
+Actualizează numele și/sau emailul utilizatorului ales după ID.
+Șterge Utilizator
+
+Elimină utilizatorul specificat din listă, identificat prin ID.
+Ieșire
+
+Închide aplicația.
